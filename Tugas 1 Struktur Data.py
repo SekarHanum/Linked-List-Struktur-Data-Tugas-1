@@ -7,9 +7,8 @@ our member :
 3. Adip Setiaputra (158)
 
 See more on our github
-[githublink]
+https://github.com/SekarHanum/Linked-List-Struktur-Data-Tugas-1
 
-9
 '''
 #Data dari sebuah menu makanan (nama menu dan harganya)
 class Node:
@@ -39,3 +38,45 @@ class LinkedList:
         menu_makanan = self.head
         index = 1
         while menu_makanan:
+            print(f"{index}.{menu_makanan.nama}\t\tRp{menu_makanan.harga}")
+            menu_makanan = menu_makanan.next
+            index += 1
+    #Menghitung harga makanan dalam list
+    def harga_total(self):
+        menu_makanan = self.head
+        harga = 0
+        while menu_makanan:
+            harga += menu_makanan.harga
+            menu_makanan = menu_makanan.next
+        # print(harga)
+        return harga
+#List dari menu yang ditawarkan
+List_Menu = [["Miexue Ice Cream",5_000],["Boba Shake    ",16_000],["Mi Sundae     ",14_000],["Mi Ganas       ",11_000],["Creamy Mango Boba",22_000]]
+System = LinkedList()
+
+#Tampilan daftar menu yang tersedia beserta harganya
+def daftar_menu():
+    print("""
+Berikut adalah menu andalan kami
+Menu                    Harga
+1. Miexue Ice Cream     Rp5000
+2. Boba Shake           Rp16000
+3. Mi Sundae            Rp14000
+4. Mi Ganas             Rp11000
+5. Creamy Manggo Boba   Rp22000
+
+9.Tampilkan pesanan
+0.Keluar
+""")
+
+#Fungsi yang digunkan untuk mengubah input user menjadi list pesanan
+def pesan(input):
+    System.tambah_pesanan(List_Menu[input-1][0],List_Menu[input-1][1])
+#jumlah total pesanan yang di pesan (mulai dari 0)
+jumlah_pesanan = 0
+#variabel yang digunakan untuk menghentikan while setelah opsi checkout di jalankan
+pengguna = True
+#ucapan selamat datang kepada pengguna aplikasi Miexue
+print("Selamat datang di Aplikasi Miexue")
+#serangkaian program yang digunakan saat pengguna melakukan pemesanan
+while pengguna:
